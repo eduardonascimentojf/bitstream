@@ -15,14 +15,14 @@ bitStream::bitStream():
 void bitStream::setBit(uint8_t pos, uint8_t bit)
 {
 
-    
+    buffer = buffer | (bit << pos);
 }
 
 // TODO: implementar o método getBit.
 uint8_t bitStream::getBit(uint8_t k)
 {
 
-
+    return buffer & (1 << k);
 }
 
 
@@ -117,7 +117,7 @@ uint8_t inPutBitStream::readBit()
 // ou seja, se todos os bits foram lidos.
 bool inPutBitStream::eof()
 {
-    return bitCount == 0;
+    return bitCount == -1;
 }
 
 void inPutBitStream::close()
